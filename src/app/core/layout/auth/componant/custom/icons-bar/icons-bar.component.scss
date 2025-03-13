@@ -1,0 +1,30 @@
+.or::after {
+  content: "";
+  width: 100px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  background-color: #cecece;
+}
+.or::before {
+  content: "";
+  width: 100px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  right: 80%;
+  background-color: #cecece;
+}
+
+.icons i {
+  border: 2px solid #e0e0e9;
+  padding: 1rem 1rem;
+  border-radius: 24px;
+  font-size: 24px !important;
+  cursor: pointer;
+}
+
+.fa-twitter {
+  color: #1d9bf0;
+}
