@@ -1,98 +1,98 @@
 <!-- !form-div -->
-<form class="p-md-5" [formGroup]="loginForm" (submit)="reigisterFunc()">
+<form class="p-lg-5" [formGroup]="registerForm" (submit)="reigisterFunc()">
 
   <h2 class="h4">sign up</h2>
 
+
+  <!-- !userName Inputs -->
   <div class="input-fild my-3">
     <div class="input-group flex-nowrap">
-      <input type="text" class="form-control bg-light" placeholder="First Name" aria-label="fName"
-        aria-describedby="addon-wrapping" formControlName="fName">
+      <input type="text" class="form-control bg-light" placeholder="userName" aria-label="username"
+        aria-describedby="addon-wrapping" formControlName="username"
+        [class.is-invalid]="registerForm.get('username')?.errors&&(registerForm.get('username')?.touched||registerForm.get('username')?.dirty)">
     </div>
-    <!-- &wrong Div -->
-    @if
-    (loginForm.get('fName')?.errors&&(loginForm.get('fName')?.touched||loginForm.get('fName')?.dirty)) {
-    <div class=" text-danger mt-1  fs-7  p-1">
-
-      @if (loginForm.get('fName')?.getError('required')) {
-      <p class="p-0 m-0">first name is requird</p>
-      }
-    </div>
-
-    }
   </div>
 
 
 
 
+  <!-- !firstName Inputs -->
   <div class="input-fild my-3">
     <div class="input-group flex-nowrap">
-      <input type="text" class="form-control bg-light" placeholder="Last Name" aria-label="lName"
-        aria-describedby="addon-wrapping" formControlName="lName">
+      <input type="text" class="form-control bg-light" placeholder="First Name" aria-label="firstName"
+        aria-describedby="addon-wrapping" formControlName="firstName"
+        [class.is-invalid]="registerForm.get('firstName')?.errors&&(registerForm.get('firstName')?.touched||registerForm.get('firstName')?.dirty)">
     </div>
-    <!-- &wrong Div -->
-    @if
-    (loginForm.get('lName')?.errors&&(loginForm.get('lName')?.touched||loginForm.get('lName')?.dirty)) {
-    <div class=" text-danger mt-1  fs-7  p-1">
-
-      @if (loginForm.get('lName')?.getError('required')) {
-      <p class="p-0 m-0">last name is requird</p>
-      }
-    </div>
-
-    }
   </div>
 
 
 
+
+
+
+  <!-- !lastname inputs -->
+  <div class="input-fild my-3">
+    <div class="input-group flex-nowrap">
+      <input type="text" class="form-control bg-light" placeholder="Last Name" aria-label="lastName"
+        aria-describedby="addon-wrapping" formControlName="lastName"
+        [class.is-invalid]="registerForm.get('lastName')?.errors&&(registerForm.get('lastName')?.touched||registerForm.get('lastName')?.dirty)">
+    </div>
+
+  </div>
+
+
+  <!-- !email input -->
   <div class="input-fild my-3">
     <div class="input-group flex-nowrap">
       <input type="email" class="form-control bg-light" placeholder="Email" aria-label="email"
-        aria-describedby="addon-wrapping" formControlName="email">
-    </div>
-    <!-- &wrong Div -->
-    @if
-    (loginForm.get('email')?.errors&&(loginForm.get('email')?.touched||loginForm.get('email')?.dirty)) {
-    <div class=" text-danger mt-1  fs-7  p-1">
-
-      @if (loginForm.get('email')?.getError('required')) {
-      <p class="p-0 m-0">email is requird</p>
-      }
+        aria-describedby="addon-wrapping" formControlName="email"
+        [class.is-invalid]="registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)">
     </div>
 
-    }
+
+
+
   </div>
 
 
+
+  <!-- !password -->
   <div class=" input-fild mt-3">
 
     <div class="input-group mb-3">
-      <input [type]="passwordType ?'text':'password'" class="form-control  bg-light" placeholder="password"
-        id="password" aria-label="password" formControlName="password">
-      <span class="input-group-text" (click)="passwordTogle()">
+      <input type="password" class="form-control  bg-light" placeholder="password" id="password" aria-label="password"
+        formControlName="password"
+        [class.is-invalid]="registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)"
+        password>
 
-        @if (passwordType) {<i class="fa-solid fa-eye"></i>}
-        @else {<i class="fa-solid fa-eye-slash"></i>}
-      </span>
     </div>
   </div>
+
+  <!-- !rePassword -->
   <div class=" input-fild mt-3">
 
     <div class="input-group mb-3">
-      <input [type]="passwordType ?'text':'password'" class="form-control  bg-light" placeholder="comferm password"
-        id="rePassword" aria-label="rePassword" formControlName="rePassword">
-      <span class="input-group-text" (click)="passwordTogle()">
+      <input type="password" class="form-control  bg-light" placeholder="comferm password" id="rePassword"
+        aria-label="rePassword" formControlName="rePassword"
+        [class.is-invalid]="registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||registerForm.get('rePassword')?.dirty)">
 
-        @if (passwordType) {<i class="fa-solid fa-eye"></i>}
-        @else {<i class="fa-solid fa-eye-slash"></i>}
-      </span>
     </div>
   </div>
 
+  <!-- !phone -->
+  <div class=" input-fild mt-3">
+
+    <div class="input-group mb-3">
+      <input type='text' class="form-control  bg-light" placeholder="phone" id="phone" aria-label="phone"
+        formControlName="phone"
+        [class.is-invalid]="registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||registerForm.get('phone')?.dirty)">
 
 
+    </div>
+  </div>
 
-
-  <div class="forget-Btn text-center me-2 mt-1">
+  <!-- *account -->
+  <div class="account-Btn text-center me-2 mt-1">
     <p class=" p-1">Already have an account?<a class="text-primary text-decoration-none"
         routerLink="/auth/login">Login</a>
 
@@ -100,12 +100,9 @@
   </div>
 
 
-  <div class="text-center"> <button type=" button"
-      class="btn btn-primary d-block w-100 rounded-4 text-white  my-3 px-4 text-capitalize">creat account
-      @if (isLogin) {<i class="fa-solid fa-spinner fa-spin"></i> }
-    </button></div>
+  <app-custom-btn [isLoading]="isLogin"> <span>creat account</span></app-custom-btn>
 
 
 
-  <app-icons-bar></app-icons-bar>
+  <!-- <app-icons-bar></app-icons-bar> -->
 </form>

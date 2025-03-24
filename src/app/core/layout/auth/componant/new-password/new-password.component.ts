@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IconsBarComponent } from '../custom/icons-bar/icons-bar.component';
+import { CustomBtnComponent } from "../custom/custom-btn/custom-btn.component";
 
 @Component({
   selector: 'app-new-password',
-  imports: [ReactiveFormsModule, IconsBarComponent],
+  imports: [ReactiveFormsModule, IconsBarComponent, CustomBtnComponent],
   templateUrl: './new-password.component.html',
   styleUrl: './new-password.component.scss',
 })

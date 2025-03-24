@@ -6,7 +6,6 @@ import { NewPasswordComponent } from './core/layout/auth/componant/new-password/
 import { ReigisterComponent } from './core/layout/auth/componant/reigister/reigister.component';
 import { ResetCodeComponent } from './core/layout/auth/componant/reset-code/reset-code.component';
 
-
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {

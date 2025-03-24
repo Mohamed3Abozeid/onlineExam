@@ -1,12 +1,12 @@
 <!-- !form-div -->
-<form class="mt-5 p-md-5" [formGroup]="codeForm" (submit)="codeFunc()">
+<form class="mt-5 pt-5" [formGroup]="codeForm" (submit)="codeFunc()">
 
   <h2 class="h4 my-3">Verify code </h2>
 
   <div class="input-fild mt-3">
     <div class="input-group flex-nowrap">
       <input type="text" class="form-control bg-light" placeholder="Enter code" aria-label="code"
-        aria-describedby="addon-wrapping" formControlName="code">
+        aria-describedby="addon-wrapping" formControlName="code" #codeInput>
     </div>
     <!-- &wrong Div -->
     @if
@@ -22,15 +22,12 @@
   </div>
 
   <div class="forget-Btn text-end me-2 mt-2">
-    <p class=" end-100   p-1  text-capitalize ">Didn’t receive a code? <a class="text-primary text-decoration-none cursor-pointer "
-        routerLink="/auth/login">Resend</a></p>
+    <p class=" end-100   p-1  text-capitalize ">Didn’t receive a code? <a
+        class="text-primary text-decoration-none cursor-pointer " routerLink="/auth/login">Resend</a></p>
   </div>
 
 
-  <div class="text-center"> <button type=" button"
-      class="btn btn-primary d-block w-100 rounded-4 text-white  my-4 px-4">Verify
-      @if (isLogin) {<i class="fa-solid fa-spinner fa-spin"></i> }
-    </button></div>
+  <app-custom-btn [isLoading]="isLogin"><span>verfiy</span></app-custom-btn>
 
 
   <app-icons-bar></app-icons-bar>

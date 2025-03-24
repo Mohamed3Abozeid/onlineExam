@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './custom-btn.component.scss',
 })
 export class CustomBtnComponent {
-  @Input() isLogin!: boolean;
+  @Input() isLoading!: boolean;
 }
