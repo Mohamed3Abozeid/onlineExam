@@ -10,5 +10,5 @@ export class AuthEndPoints {
   static DELET_ACCOUNT = 'https://exam.elevateegy.com/api/v1/auth/deleteMe';
   static EDIT_PROFILE = 'https://exam.elevateegy.com/api/v1/auth/editProfile';
   static LOGOUT = 'https://exam.elevateegy.com/api/v1/auth/logout';
-  static RESET_PASSWORD = `resetPassword`;
+  static RESET_PASSWORD = `https://exam.elevateegy.com/api/v1/auth/resetPassword`;
 }

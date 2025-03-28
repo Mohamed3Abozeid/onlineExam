@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,18 +6,24 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CustomBtnComponent } from '../custom/custom-btn/custom-btn.component';
 import { AuthLibService } from 'auth-Lib';
-import { log } from 'console';
+import { CustomBtnComponent } from '../../../custom/custom-btn/custom-btn.component';
+import { CustomErrorComponent } from '../../../custom/custom-error/custom-error.component';
 
 @Component({
   selector: 'app-forget-password',
-  imports: [ReactiveFormsModule, RouterLink, CustomBtnComponent],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    CustomBtnComponent,
+    CustomErrorComponent,
+  ],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss',
 })
 export class ForgetPasswordComponent {
-  constructor(private _AuthLibService: AuthLibService) {}
+  constructor(private _AuthLibService: AuthLibService) {
+  }
   private readonly _Router = inject(Router);
 
   forgetForm: FormGroup = new FormGroup({
@@ -27,24 +33,21 @@ export class ForgetPasswordComponent {
   isLogin: boolean = false;
   passwordType: boolean = false;
   errorMassage: string = '';
-
+  @Output() userEmail = new EventEmitter<string>();
+  sendEmail() {
+    this.userEmail.emit(this.forgetForm.value.email);
+  }
   forgetFun() {
-    // console.log(this.forgetForm.value);
     this.isLogin = true;
     this._AuthLibService.ForgetPassword(this.forgetForm.value).subscribe({
       next: (data) => {
         this.isLogin = false;
-        if (data.message == 'success') {
-          this._Router.navigate(['/auth/Verify-code']);
-        } else {
-          this.errorMassage = data.message;
-        }
+        // console.log(this.forgetForm.value.email);
+        this.sendEmail();
       },
 
       error: (err) => {
         this.isLogin = false;
-        // console.log(err);
-
         this.errorMassage = 'There is no account with this email';
       },
     });

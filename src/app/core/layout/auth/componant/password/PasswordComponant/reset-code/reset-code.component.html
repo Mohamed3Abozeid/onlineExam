@@ -6,19 +6,10 @@
   <div class="input-fild mt-3">
     <div class="input-group flex-nowrap">
       <input type="text" class="form-control bg-light" placeholder="Enter code" aria-label="code"
-        aria-describedby="addon-wrapping" formControlName="code" #codeInput>
+        aria-describedby="addon-wrapping" formControlName="resetCode" #codeInput>
     </div>
-    <!-- &wrong Div -->
-    @if
-    (codeForm.get('code')?.errors&&(codeForm.get('code')?.touched||codeForm.get('code')?.dirty)) {
-    <div class=" text-danger mt-1  fs-7  p-1">
-
-      @if (codeForm.get('code')?.getError('required')) {
-      <p class="p-0 m-0">code is requird</p>
-      }
-    </div>
-
-    }
+    <!-- !Error -->
+    <app-custom-error [formData]="codeForm" [inputName]="'code'"></app-custom-error>
   </div>
 
   <div class="forget-Btn text-end me-2 mt-2">

@@ -7,22 +7,21 @@ body {
 
 .min-color {
   color: #4461f2 !important;
-}.fs-7
-{
-  font-size: .8rem !important;
+}
+.fs-7 {
+  font-size: 0.8rem !important;
 }
 
-
-::placeholder
-{
-  font-size: .8rem;
+::placeholder {
+  font-size: 0.8rem;
   color: gray;
   // padding: 10px;
 }
 
-
-
-.cursor-pointer
-{
+.cursor-pointer {
   cursor: pointer;
+}
+
+.form-control:focus {
+  box-shadow: none;
 }

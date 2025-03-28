@@ -1,0 +1,10 @@
+@if(formData.get(`${inputName}`)?.errors&&(formData.get(`${inputName}`)?.touched||formData.get(`${inputName}`)?.dirty))
+{
+<div class=" text-danger mt-1  fs-7  p-1">
+
+  @if (formData.get(`${inputName}`)?.getError('required')) {
+  <p class="p-0 m-0">{{inputName}} is requird</p>
+  }
+</div>
+
+}

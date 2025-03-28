@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions()
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
 };

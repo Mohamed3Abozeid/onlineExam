@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { IconsBarComponent } from '../custom/icons-bar/icons-bar.component';
 import { CustomBtnComponent } from '../custom/custom-btn/custom-btn.component';
 import { AuthLibService } from 'auth-Lib';
+import { CustomErrorComponent } from '../custom/custom-error/custom-error.component';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { AuthLibService } from 'auth-Lib';
     RouterLink,
     IconsBarComponent,
     CustomBtnComponent,
+    CustomErrorComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -41,13 +43,11 @@ export class LoginComponent {
     this._AuthLibService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.isLogin = false;
-        if (res.error !== null) {
-          console.log('badnews', res);
-
-          this.errorMassage = 'incorect email or password';
-        } else {
-          this._Router.navigate(['/auth/reigister']);
-        }
+        this._Router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.isLogin = false;
+        this.errorMassage = 'incorect email or password';
       },
     });
   }

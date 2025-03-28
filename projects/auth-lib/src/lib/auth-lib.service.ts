@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthEndPoints } from './enums/AuthApi.endPoints';
 import { AuthApi } from './base/AuthApi';
@@ -18,20 +18,23 @@ import {
 export class AuthLibService implements AuthApi {
   constructor(
     private _HttpClient: HttpClient,
-    private _authApiService: AuthApiService,
+    private _authApiService: AuthApiService
   ) {}
 
   login(data: loginData): Observable<any> {
-
     return this._HttpClient.post(AuthEndPoints.LOGIN, data).pipe(
       map((res) => this._authApiService.adapt(res)),
-      catchError((res) => of(res))
+      catchError((error) => {
+        return throwError(() => new Error(error.message));
+      })
     );
   }
   register(data: reigisterData): Observable<any> {
     return this._HttpClient.post(AuthEndPoints.REGISTER, data).pipe(
       map((res) => this._authApiService.adapt(res)),
-      catchError((res) => of(res))
+      catchError((error) => {
+        return throwError(() => new Error(error.message));
+      })
     );
   }
 
@@ -43,6 +46,6 @@ export class AuthLibService implements AuthApi {
     return this._HttpClient.post(AuthEndPoints.VERFIY_CODE, data);
   }
   resetPassword(data: newPasswordData): Observable<any> {
-    return this._HttpClient.post(AuthEndPoints.RESET_PASSWORD, data);
+    return this._HttpClient.put(AuthEndPoints.RESET_PASSWORD, data);
   }
 }

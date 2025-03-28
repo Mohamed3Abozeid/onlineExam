@@ -34,17 +34,21 @@ export class ReigisterComponent {
   });
 
   isLogin: boolean = false;
+  massageError: string = '';
 
   reigisterFunc() {
     this.isLogin = true;
 
     this._AuthLibService.register(this.registerForm.value).subscribe({
       next: (res) => {
-        console.log(res);
         this.isLogin = false;
         if (res.massage == 'success') {
           this._Router.navigate(['/auth/login']);
         }
+      },
+      error: (err) => {
+        this.isLogin = false;
+        this.massageError = 'Incorected Inputs';
       },
     });
   }
