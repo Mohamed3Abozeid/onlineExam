@@ -1,0 +1,115 @@
+<!-- !form-div -->
+<form class="p-lg-5" [formGroup]="registerForm" (submit)="reigisterFunc()">
+
+  <h2 class="h4">sign up</h2>
+
+
+  <!-- !userName Inputs -->
+  <div class="input-fild my-3">
+    @let userControl=registerForm.get('username');
+    <div class="input-group flex-nowrap">
+      <input type="text" class="form-control bg-light" placeholder="userName" aria-label="username"
+        aria-describedby="addon-wrapping" formControlName="username"
+        [class.is-invalid]="userControl?.errors&&(userControl?.touched||userControl?.dirty)">
+    </div>
+  </div>
+
+
+
+
+  <!-- !firstName Inputs -->
+  <div class="input-fild my-3">
+    @let fNameControl=registerForm.get('firstName');
+
+    <div class="input-group flex-nowrap">
+      <input type="text" class="form-control bg-light" placeholder="First Name" aria-label="firstName"
+        aria-describedby="addon-wrapping" formControlName="firstName"
+        [class.is-invalid]="fNameControl?.errors&&(fNameControl?.touched||fNameControl?.dirty)">
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- !lastname inputs -->
+  <div class="input-fild my-3">
+    @let lNameControl=registerForm.get('lastName');
+
+    <div class="input-group flex-nowrap">
+      <input type="text" class="form-control bg-light" placeholder="Last Name" aria-label="lastName"
+        aria-describedby="addon-wrapping" formControlName="lastName"
+        [class.is-invalid]="lNameControl?.errors&&(lNameControl?.touched||lNameControl?.dirty)">
+    </div>
+
+  </div>
+
+
+  <!-- !email input -->
+  <div class="input-fild my-3">
+    @let emailControl=registerForm.get('email');
+
+    <div class="input-group flex-nowrap">
+      <input type="email" class="form-control bg-light" placeholder="Email" aria-label="email"
+        aria-describedby="addon-wrapping" formControlName="email"
+        [class.is-invalid]="emailControl?.errors&&(emailControl?.touched||emailControl?.dirty)">
+    </div>
+
+
+
+
+  </div>
+
+
+
+  <!-- !password -->
+  <div class=" input-fild mt-3">
+    @let passwordControl=registerForm.get('password');
+
+    <div class="input-group mb-3">
+      <input type="password" class="form-control  bg-light" placeholder="password" id="password" aria-label="password"
+        formControlName="password"
+        [class.is-invalid]="passwordControl?.errors&&(passwordControl?.touched||passwordControl?.dirty)" password>
+
+    </div>
+  </div>
+
+  <!-- !rePassword -->
+  <div class=" input-fild mt-3">
+    @let rePasswordControl=registerForm.get('rePassword');
+
+    <div class="input-group mb-3">
+      <input type="password" class="form-control  bg-light" placeholder="comferm password" id="rePassword"
+        aria-label="rePassword" formControlName="rePassword"
+        [class.is-invalid]="rePasswordControl?.errors&&(rePasswordControl?.touched||rePasswordControl?.dirty)">
+
+    </div>
+  </div>
+
+  <!-- !phone -->
+  <div class=" input-fild mt-3">
+    @let phoneControl=registerForm.get('phone');
+    <div class="input-group mb-3">
+      <input type='text' class="form-control  bg-light" placeholder="phone" id="phone" aria-label="phone"
+        formControlName="phone" [class.is-invalid]="phoneControl?.errors&&(phoneControl?.touched||phoneControl?.dirty)">
+
+
+    </div>
+  </div>
+
+  <!-- *have account -->
+  <div class="account-Btn text-center me-2 mt-1">
+    <p class=" p-1">Already have an account?<a class="text-primary text-decoration-none"
+        routerLink="/auth/login">Login</a>
+
+    </p>
+  </div>
+
+
+  <app-custom-btn [isLoading]="isLogin"> <span>creat account</span></app-custom-btn>
+
+
+
+  <!-- <app-icons-bar></app-icons-bar> -->
+</form>

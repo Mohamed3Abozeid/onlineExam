@@ -1,0 +1,50 @@
+<!-- !form-div -->
+<form class="mt-5 p-md-5" [formGroup]="loginForm" (submit)="loginFun()">
+
+  <h2 class="h4">sign in </h2>
+
+  <div class="input-fild my-3">
+    <div class="input-group flex-nowrap">
+      <input type="email" class="form-control bg-light " placeholder="Enter Email" aria-label="email"
+        aria-describedby="addon-wrapping" formControlName="email"
+        [class.is-invalid]="loginForm.get('email')?.errors&&(loginForm.get('email')?.touched||loginForm.get('email')?.dirty)">
+    </div>
+    <!-- !Error -->
+    <app-custom-error [formData]="loginForm" [inputName]="'email'"></app-custom-error>
+  </div>
+
+
+  <div class=" input-fild mt-4">
+
+    <div class="input-group mb-3">
+      <input [type]="passwordType ?'text':'password'" class="form-control  bg-light" placeholder="password"
+        id="password" aria-label="password" formControlName="password"
+        [class.is-invalid]="loginForm.get('password')?.errors&&(loginForm.get('password')?.touched||loginForm.get('password')?.dirty)">
+      <span class="input-group-text " (click)="passwordTogle()">
+
+        @if (passwordType) {<i class="fa-solid fa-eye "></i>}
+        @else {<i class="fa-solid fa-eye-slash"></i>}
+      </span>
+    </div>
+
+
+    <!-- !Error -->
+    <app-custom-error [formData]="loginForm" [inputName]="'password'"></app-custom-error>
+
+  </div>
+
+
+
+
+
+  <div class="forget-Btn text-end me-2 mt-1">
+    <a routerLink="/auth/rest-password" class=" end-100 btn text-primary p-1">Recovery Password .?</a>
+  </div>
+
+  @if (errorMassage) {<p class="m-0 p-0 text-danger">{{errorMassage}}</p>
+  }
+  <app-custom-btn [isLoading]="isLogin"><span>sign in</span></app-custom-btn>
+
+
+  <app-icons-bar></app-icons-bar>
+</form>

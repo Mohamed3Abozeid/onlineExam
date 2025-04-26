@@ -11,7 +11,7 @@ export class AuthApiService implements Adaptor {
     return {
       massage: data.message,
       token: data.token,
-      userEmail: data.user.email,
+      userData: data.user,
     };
   }
 }

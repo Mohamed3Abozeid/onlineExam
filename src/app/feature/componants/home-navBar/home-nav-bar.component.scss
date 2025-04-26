@@ -1,0 +1,13 @@
+.input-group {
+  width: 80%;
+  padding: 0.3rem 1rem;
+  display: flex;
+  border-radius: 1rem;
+  justify-content: space-between;
+}
+.input-group input {
+  border: none;
+  outline: none;
+  width: 90%;
+  padding-left: 10px;
+}

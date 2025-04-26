@@ -1,0 +1,27 @@
+<section class=" w-75 vh-100">
+  <div class="container-fluid">
+    <div class="row">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="list-unstyled mt-5 text-center d-flex flex-column collapse navbar-collapse" id="navbarNavAltMarkup">
+        <li class="mb-4 mt-3 "><img src="Final Logo 1.png" alt="logo" class="w-75"></li>
+        <li class="my-3 btn  d-flex justify-content-between align-items-center btn-light text-primary"
+          routerLink="/home/profile" routerLinkActive="text-light bg-primary">
+          <span class="me-3"><i class="fa-solid fa-cubes "></i></span><span class="fs-7">Dashboard</span>
+        </li>
+        <li class="my-3 btn  d-flex justify-content-between align-items-center btn-light text-primary"
+          routerLink="/home/quizHistory" routerLinkActive="text-light bg-primary">
+          <span class="me-3"><i class="fa-solid fa-clock-rotate-left "></i></span>
+          <span class="fs-7">Quiz
+            History</span>
+        </li>
+        <li class="my-3  btn btn-outline-danger d-flex justify-content-between align-items-center" (click)="signOut()">
+          <span class="me-3"><i class="fa-solid fa-arrow-left text-danger"></i></span><span class="fs-7">Log Out</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
